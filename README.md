@@ -15,13 +15,13 @@ For now, we'll test the following:
 
 We'll be working with two tables, `Main` and `Secondary`. They are defined as:
 
-`Main`:
+Main:
 
 - `mid`, one of the types above
 - `val1` and `val2`, both ints
 - two keys, one one each of the two val fields
 
-`Secondary`:
+Secondary:
 
 - `sid`, int auto\_increment
 - `val3`, int
