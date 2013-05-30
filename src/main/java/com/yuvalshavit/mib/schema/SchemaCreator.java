@@ -3,7 +3,7 @@ package com.yuvalshavit.mib.schema;
 import com.google.common.base.Charsets;
 import com.google.common.base.Supplier;
 import com.google.common.io.Resources;
-import com.yuvalshavit.mib.pk.PkFieldProvider;
+import com.yuvalshavit.mib.pk.PkFieldInsertProvider;
 
 import java.io.IOException;
 import java.net.URL;
@@ -12,11 +12,11 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public final class SchemaCreator {
-  private final PkFieldProvider pkFieldProvider;
+  private final PkFieldInsertProvider pkFieldProvider;
   private final Supplier<? extends Connection> connector;
   private final boolean warmup;
 
-  public SchemaCreator(PkFieldProvider pkFieldProvider, Supplier<? extends Connection> connector, boolean warmup) {
+  public SchemaCreator(PkFieldInsertProvider pkFieldProvider, Supplier<? extends Connection> connector, boolean warmup) {
     this.pkFieldProvider = pkFieldProvider;
     this.connector = connector;
     this.warmup = warmup;

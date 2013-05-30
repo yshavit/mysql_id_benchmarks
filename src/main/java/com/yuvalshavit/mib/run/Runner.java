@@ -1,7 +1,7 @@
 package com.yuvalshavit.mib.run;
 
 import com.google.common.base.Supplier;
-import com.yuvalshavit.mib.pk.PkFieldProvider;
+import com.yuvalshavit.mib.pk.PkFieldInsertProvider;
 import com.yuvalshavit.mib.schema.SchemaCreator;
 import com.yuvalshavit.mib.teststeps.Test;
 
@@ -13,14 +13,14 @@ public class Runner {
   private final int nRows;
   private final int nThreads;
   private final Supplier<? extends Connection> connector;
-  private final PkFieldProvider pkFieldProvider;
+  private final PkFieldInsertProvider pkFieldProvider;
   private final TestResultHandler resultHandler;
   private final Collection<? extends Supplier<? extends Test>> tests;
 
   public Runner(int nRows,
                 int nThreads,
                 Supplier<? extends Connection> connector,
-                PkFieldProvider pkFieldProvider,
+                PkFieldInsertProvider pkFieldProvider,
                 TestResultHandler resultHandler,
                 Collection<? extends Supplier<? extends Test>> tests) {
     this.nRows = nRows;

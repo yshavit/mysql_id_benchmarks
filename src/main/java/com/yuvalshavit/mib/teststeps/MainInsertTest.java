@@ -1,6 +1,6 @@
 package com.yuvalshavit.mib.teststeps;
 
-import com.yuvalshavit.mib.pk.PkFieldProvider;
+import com.yuvalshavit.mib.pk.PkFieldInsertProvider;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -9,9 +9,9 @@ import java.util.UUID;
 
 public class MainInsertTest implements Test {
   private final Random random = new Random();
-  private final PkFieldProvider pkFieldProvider;
+  private final PkFieldInsertProvider pkFieldProvider;
 
-  public MainInsertTest(PkFieldProvider pkFieldProvider) {
+  public MainInsertTest(PkFieldInsertProvider pkFieldProvider) {
     this.pkFieldProvider = pkFieldProvider;
   }
 
