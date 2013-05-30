@@ -2,11 +2,11 @@ package com.yuvalshavit.mib.result;
 
 import com.yuvalshavit.mib.teststeps.Test;
 
-public final class Result<H extends TestResultHandler> {
+public final class TestResult {
   private final Class<? extends Test> testClass;
-  private final H handler;
+  private final TestResultHandler handler;
 
-  public Result(Class<? extends Test> testClass, H handler) {
+  public TestResult(Class<? extends Test> testClass, TestResultHandler handler) {
     this.testClass = testClass;
     this.handler = handler;
   }
@@ -15,7 +15,7 @@ public final class Result<H extends TestResultHandler> {
     return testClass;
   }
 
-  public H getHandler() {
+  public TestResultHandler getHandler() {
     return handler;
   }
 
