@@ -1,6 +1,5 @@
 package com.yuvalshavit.mib.pk;
 
-import java.security.SecureRandom;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Random;
@@ -8,13 +7,12 @@ import java.util.UUID;
 
 public abstract class NonAutoIncrPkFieldProvider implements PkFieldInsertProvider {
 
-  private final byte[] seed;
-  private final SecureRandom random;
+  private final long seed;
+  private final Random random;
 
   protected NonAutoIncrPkFieldProvider() {
-    seed = new byte[128];
-    new Random().nextBytes(seed);
-    random = new SecureRandom(seed);
+    seed = new Random().nextLong();
+    random = new Random(seed);
   }
 
   protected abstract void setNextValue(PreparedStatement statement, UUID uuid, int position) throws SQLException;
@@ -33,7 +31,7 @@ public abstract class NonAutoIncrPkFieldProvider implements PkFieldInsertProvide
   @Override
   public PkFieldProvider replay() {
     return new PkFieldProvider() {
-      private final SecureRandom replayRandom = new SecureRandom(seed);
+      private final Random replayRandom = new Random(seed);
       @Override
       public void setNextValue(PreparedStatement statement, int position) throws SQLException {
         UUID uuid = nextUuid(replayRandom);
@@ -42,7 +40,7 @@ public abstract class NonAutoIncrPkFieldProvider implements PkFieldInsertProvide
     };
   }
 
-  private static UUID nextUuid(SecureRandom random) {
+  private static UUID nextUuid(Random random) {
     // Copy this part from UUID.randomUUID(), because we need control over the PRNG
     byte[] uuidBytes = new byte[16];
     random.nextBytes(uuidBytes);
