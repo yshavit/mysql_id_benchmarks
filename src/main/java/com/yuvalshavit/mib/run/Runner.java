@@ -42,7 +42,7 @@ public class Runner {
     this.resultHandler = resultHandler;
   }
 
-  private void run(boolean warmup) throws Exception {
+  public void run(boolean warmup) throws Exception {
     ConnectionProvider connector = new ConnectionProvider() {
       @Override
       public Connection get() throws SQLException {

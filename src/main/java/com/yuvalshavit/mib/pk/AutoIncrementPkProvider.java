@@ -7,7 +7,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class AutoIncrementPkProvider implements PkFieldInsertProvider {
   @Override
   public String getSqlDefinition() {
-    return "INTEGER AUTO_INCREMENT";
+    return "INTEGER";
   }
 
   @Override

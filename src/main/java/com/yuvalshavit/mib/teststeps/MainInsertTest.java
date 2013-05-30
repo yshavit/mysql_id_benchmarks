@@ -24,7 +24,7 @@ public class MainInsertTest implements Test {
 
   @Override
   public void setParameters(PreparedStatement statement) throws SQLException {
-    int pos = pkFieldProvider.isAutoIncrement() ? 1 : 0;
+    int pos = pkFieldProvider.isAutoIncrement() ? 0 : 1;
     pkFieldProvider.setNextValue(statement, pos);
     statement.setString(++pos, UUID.randomUUID().toString()); // val1
     statement.setInt(++pos, random.nextInt()); // val2

@@ -49,7 +49,7 @@ public final class Tester implements Runnable {
         try {
           test.setParameters(state);
           long start = System.nanoTime();
-          state.executeUpdate();
+          state.execute();
           resultHandler.onSuccess(callSequence, System.nanoTime() - start);
         }
         catch (Exception failure) {

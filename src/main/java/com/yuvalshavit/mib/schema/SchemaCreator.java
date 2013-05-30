@@ -47,12 +47,14 @@ public final class SchemaCreator {
     }
   }
 
-  public String getSql(String resourceName) throws IOException {
-    URL url = Resources.getResource(resourceName);
+  private String getSql(String resourceName) throws IOException {
+    URL url = Resources.getResource(SchemaCreator.class, resourceName);
     String sql = Resources.toString(url, Charsets.UTF_8);
     String engine = warmup ? "BLACKHOLE" : "InnoDB";
+    String autoInc = pkFieldProvider.isAutoIncrement() ? "AUTO_INCREMENT" : "";
     sql = sql.replace("$ENGINE$", engine);
-    sql = sql.replace("ID_TYPE$", pkFieldProvider.getSqlDefinition());
+    sql = sql.replace("$ID_TYPE$", pkFieldProvider.getSqlDefinition());
+    sql = sql.replace("$AUTO_INCREMENT$", autoInc);
     return sql;
   }
 }
