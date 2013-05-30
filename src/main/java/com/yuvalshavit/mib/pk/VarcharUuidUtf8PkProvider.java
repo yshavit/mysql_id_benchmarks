@@ -10,7 +10,7 @@ public final class VarcharUuidUtf8PkProvider extends NonAutoIncrPkFieldProvider 
   }
 
   @Override
-  public void setNextValue(PreparedStatement statement, int position)  throws SQLException {
-    statement.setString(position, getUuid());
+  public void setNextValue(PreparedStatement statement, String uuid, int position)  throws SQLException {
+    statement.setString(position, uuid);
   }
 }

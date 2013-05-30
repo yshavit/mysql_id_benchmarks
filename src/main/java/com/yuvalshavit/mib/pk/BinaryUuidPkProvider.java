@@ -10,7 +10,7 @@ public final class BinaryUuidPkProvider extends NonAutoIncrPkFieldProvider {
   }
 
   @Override
-  public void setNextValue(PreparedStatement statement, int position)  throws SQLException {
+  public void setNextValue(PreparedStatement statement, String uuid, int position)  throws SQLException {
     throw new UnsupportedOperationException(); // TODO!
   }
 }
