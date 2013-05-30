@@ -1,4 +1,4 @@
-package com.yuvalshavit.mib;
+package com.yuvalshavit.mib.teststeps;
 
 import net.jcip.annotations.NotThreadSafe;
 

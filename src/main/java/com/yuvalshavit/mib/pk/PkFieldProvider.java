@@ -1,4 +1,4 @@
-package com.yuvalshavit.mib;
+package com.yuvalshavit.mib.pk;
 
 import net.jcip.annotations.ThreadSafe;
 

@@ -1,4 +1,4 @@
-package com.yuvalshavit.mib;
+package com.yuvalshavit.mib.util;
 
 import com.google.common.io.Closer;
 

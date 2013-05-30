@@ -1,6 +1,8 @@
-package com.yuvalshavit.mib;
+package com.yuvalshavit.mib.run;
 
 import com.google.common.base.Supplier;
+import com.yuvalshavit.mib.util.SqlCloser;
+import com.yuvalshavit.mib.teststeps.Test;
 import net.jcip.annotations.ThreadSafe;
 
 import java.sql.Connection;

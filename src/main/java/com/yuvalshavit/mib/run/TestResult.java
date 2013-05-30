@@ -1,4 +1,4 @@
-package com.yuvalshavit.mib;
+package com.yuvalshavit.mib.run;
 
 public class TestResult {
   private final int sequence;
