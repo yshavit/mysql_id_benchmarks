@@ -3,6 +3,7 @@ package com.yuvalshavit.mib.run;
 import com.google.common.base.Supplier;
 import com.yuvalshavit.mib.pk.AutoIncrementPkProvider;
 import com.yuvalshavit.mib.pk.BinaryUuidPkProvider;
+import com.yuvalshavit.mib.pk.CharUuidLatin1PkProvider;
 import com.yuvalshavit.mib.pk.PkFieldInsertProvider;
 import com.yuvalshavit.mib.pk.VarcharUuidLatin1PkProvider;
 import com.yuvalshavit.mib.pk.VarcharUuidUtf8PkProvider;
@@ -62,6 +63,12 @@ public class Main {
       @Override
       public PkFieldInsertProvider get() {
         return new VarcharUuidLatin1PkProvider();
+      }
+    },
+    CHAR_LATIN1 {
+      @Override
+      public PkFieldInsertProvider get() {
+        return new CharUuidLatin1PkProvider();
       }
     },
     BINARY {
