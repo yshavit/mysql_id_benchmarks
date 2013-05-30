@@ -8,6 +8,6 @@ import java.sql.SQLException;
 
 @NotThreadSafe
 public interface Test {
-  PreparedStatement setUp(Connection connection) throws SQLException;
-  void run(PreparedStatement statement) throws Exception;
+  String getPreparedStatementSql();
+  void setParameters(PreparedStatement statement) throws SQLException;
 }

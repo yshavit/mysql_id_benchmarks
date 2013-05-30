@@ -1,7 +1,6 @@
 package com.yuvalshavit.mib;
 
 import com.google.common.base.Supplier;
-import com.google.common.io.Closeables;
 import net.jcip.annotations.ThreadSafe;
 
 import java.sql.Connection;
@@ -32,9 +31,10 @@ public final class Tester implements Runnable {
     SqlCloser closer = new SqlCloser();
     try {
       Connection connection = closer.register(connector.get());
+      String sql = test.getPreparedStatementSql();
       PreparedStatement state;
       try {
-        state = closer.register(test.setUp(connection));
+        state = closer.register(connection.prepareStatement(sql));
       }
       catch (Exception e) {
         throw new TestException(e);
@@ -44,16 +44,17 @@ public final class Tester implements Runnable {
         int callSequence = sequencer.incrementAndGet();
         if (callSequence <= 0)
           return;
-        long start = System.nanoTime();
         try {
-          test.run(state);
+          test.setParameters(state);
+          long start = System.nanoTime();
+          state.executeUpdate();
           resultHandler.onSuccess(callSequence, System.nanoTime() - start);
         }
         catch (Exception failure) {
-          resultHandler.onFailure(callSequence, System.nanoTime() - start, failure);
+          resultHandler.onFailure(callSequence, failure);
         }
         catch (AssertionError error) {
-          resultHandler.onFailure(callSequence, System.nanoTime() - start, error);
+          resultHandler.onFailure(callSequence, error);
         }
       }
     }
