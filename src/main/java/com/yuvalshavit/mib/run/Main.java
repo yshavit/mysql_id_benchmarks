@@ -111,9 +111,9 @@ public class Main {
     Main main = new Main(nRows, nThreads, user, password, schema);
 
     for (PkProvider pkProvider : pkProviders) {
-      System.out.print("Warming up: " + pkProvider + "... ");
+      System.out.print("Warming up " + pkProvider + "... ");
       main.run(pkProvider.get(), testResultHandlerSupplier, 10000);
-      System.out.println("Warmed. Testing...");
+      System.out.println("warmed. Testing...");
       List<TestResult> testTestResults = main.run(pkProvider.get(), testResultHandlerSupplier, -1);
       for (TestResult testResult : testTestResults) {
         System.out.println(testResult);
