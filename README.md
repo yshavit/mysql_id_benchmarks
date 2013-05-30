@@ -18,7 +18,8 @@ We'll be working with two tables, `Main` and `Secondary`. They are defined as:
 Main:
 
 - `mid`, one of the types above
-- `val1` and `val2`, both ints
+- `val1`, a varchar(32) storing a uuid
+- `val2`, an int
 - two keys, one one each of the two val fields
 
 Secondary:
