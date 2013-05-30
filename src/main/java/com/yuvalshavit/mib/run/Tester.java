@@ -1,5 +1,6 @@
 package com.yuvalshavit.mib.run;
 
+import com.yuvalshavit.mib.result.TestResultHandler;
 import com.yuvalshavit.mib.util.SqlCloser;
 import com.yuvalshavit.mib.teststeps.Test;
 import net.jcip.annotations.ThreadSafe;

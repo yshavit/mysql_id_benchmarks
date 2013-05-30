@@ -1,6 +1,7 @@
 package com.yuvalshavit.mib.run;
 
 import com.yuvalshavit.mib.pk.PkFieldInsertProvider;
+import com.yuvalshavit.mib.result.TestResultHandler;
 import com.yuvalshavit.mib.schema.SchemaCreator;
 import com.yuvalshavit.mib.teststeps.JoinTest;
 import com.yuvalshavit.mib.teststeps.MainDeleteTest;

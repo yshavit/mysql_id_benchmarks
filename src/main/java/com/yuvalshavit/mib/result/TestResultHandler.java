@@ -1,4 +1,4 @@
-package com.yuvalshavit.mib.run;
+package com.yuvalshavit.mib.result;
 
 public interface TestResultHandler {
   void onSuccess(int sequenceId, long time);
