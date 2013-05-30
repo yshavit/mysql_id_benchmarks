@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 @ThreadSafe
-public interface PkFieldProvider {
-  void setNextValue(PreparedStatement statement, int position) throws SQLException;
+public interface PkFieldInsertProvider extends PkFieldProvider {
+  String getSqlDefinition();
+  boolean isAutoIncrement();
+  PkFieldProvider replay();
 }

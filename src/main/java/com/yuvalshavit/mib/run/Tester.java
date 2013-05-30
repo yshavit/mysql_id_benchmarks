@@ -43,7 +43,7 @@ public final class Tester implements Runnable {
       }
 
       while (true) {
-        int callSequence = sequencer.incrementAndGet();
+        int callSequence = sequencer.decrementAndGet();
         if (callSequence <= 0)
           return;
         try {
