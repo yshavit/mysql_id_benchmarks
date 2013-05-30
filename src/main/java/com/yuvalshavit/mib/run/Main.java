@@ -15,6 +15,7 @@ import com.yuvalshavit.mib.teststeps.JoinTest;
 import com.yuvalshavit.mib.teststeps.MainDeleteTest;
 import com.yuvalshavit.mib.teststeps.MainInsertTest;
 import com.yuvalshavit.mib.teststeps.MainUpdateTest;
+import com.yuvalshavit.mib.teststeps.SecondaryInsertTest;
 import com.yuvalshavit.mib.teststeps.Test;
 
 import java.sql.Connection;
@@ -146,8 +147,7 @@ public class Main {
     ConnectionProvider connector = new ConnectionProvider() {
       @Override
       public Connection get() throws SQLException {
-        String connectString = String.format("jdbc:mysql://localhost/%s?user=%s&password=%s",
-          schema, user, password);
+        String connectString = String.format("jdbc:mysql://localhost/%s?user=%s&password=%s", schema, user, password);
         return DriverManager.getConnection(connectString);
       }
     };
@@ -156,13 +156,14 @@ public class Main {
     List<Test> tests = new ArrayList<Test>(4);
     tests.add(new MainInsertTest(pkFieldProvider));
     tests.add(new MainUpdateTest(pkFieldProvider.replay()));
+    tests.add(new SecondaryInsertTest(pkFieldProvider.replay()));
     tests.add(new JoinTest());
     tests.add(new MainDeleteTest(pkFieldProvider.replay()));
 
     List<TestResult> testResults = new ArrayList<TestResult>(tests.size());
     for (Test test : tests) {
       SimpleExecutor executor = new SimpleExecutor();
-      AtomicInteger sequencer = new AtomicInteger(warmup > 0 ? warmup : nRows);
+      AtomicInteger sequencer = new AtomicInteger(warmup > 0 ? warmup : (nRows+1));
       TestResultHandler handler = resultsHandlerSupplier.get();
       testResults.add(new TestResult(test.getClass(), handler));
       for (int i = 0; i < nThreads; ++i) {
