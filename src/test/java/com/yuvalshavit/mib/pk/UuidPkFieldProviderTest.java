@@ -10,8 +10,8 @@ import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 
-public final class NonAutoIncrPkFieldProviderTest {
-  private static class DummyPkFieldProvider extends NonAutoIncrPkFieldProvider {
+public final class UuidPkFieldProviderTest {
+  private static class DummyPkFieldProvider extends UuidPkFieldProvider {
     private final List<String> uuids = new ArrayList<String>();
 
     @Override

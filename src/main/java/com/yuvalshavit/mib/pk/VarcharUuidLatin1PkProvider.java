@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
 
-public final class VarcharUuidLatin1PkProvider extends NonAutoIncrPkFieldProvider {
+public final class VarcharUuidLatin1PkProvider extends UuidPkFieldProvider {
   @Override
   public String getSqlDefinition() {
     return "VARCHAR(36) CHARACTER SET latin1 COLLATE latin1_swedish_ci";

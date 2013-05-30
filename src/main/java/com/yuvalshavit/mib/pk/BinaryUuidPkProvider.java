@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.UUID;
 
-public final class BinaryUuidPkProvider extends NonAutoIncrPkFieldProvider {
+public final class BinaryUuidPkProvider extends UuidPkFieldProvider {
   @Override
   public String getSqlDefinition() {
     return "BINARY(16)";

@@ -5,12 +5,12 @@ import java.sql.SQLException;
 import java.util.Random;
 import java.util.UUID;
 
-public abstract class NonAutoIncrPkFieldProvider implements PkFieldInsertProvider {
+public abstract class UuidPkFieldProvider implements PkFieldInsertProvider {
 
   private final long seed;
   private final Random random;
 
-  protected NonAutoIncrPkFieldProvider() {
+  protected UuidPkFieldProvider() {
     seed = new Random().nextLong();
     random = new Random(seed);
   }
@@ -35,7 +35,7 @@ public abstract class NonAutoIncrPkFieldProvider implements PkFieldInsertProvide
       @Override
       public void setNextValue(PreparedStatement statement, int position) throws SQLException {
         UUID uuid = nextUuid(replayRandom);
-        NonAutoIncrPkFieldProvider.this.setNextValue(statement, uuid, position);
+        UuidPkFieldProvider.this.setNextValue(statement, uuid, position);
       }
     };
   }
