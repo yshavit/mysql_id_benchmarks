@@ -41,13 +41,13 @@ Compiling and running
 
     mvn clean package
     
-    java \\
-        -Drows=<rows> \\
-        -Dthreads=<threads> \\
-        -Duser=<mysql_user> \\
-        -Dschema=<mysql_schema> \\
-        [ -Dpassword=<mysql_password> ] \\
-        -Dprovider=<providers> \\
+    java \
+        -Drows=<rows> \
+        -Dthreads=<threads> \
+        -Duser=<mysql_user> \
+        -Dschema=<mysql_schema> \
+        [ -Dpassword=<mysql_password> ] \
+        -Dprovider=<providers> \
         -jar target/mysql-id-benchmarks-1.0-SNAPSHOT-jar-with-dependencies.jar
 
 where:
