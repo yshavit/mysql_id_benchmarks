@@ -71,8 +71,8 @@ public class Runner {
       for (int i = 0; i < nThreads; ++i) {
         Tester tester = new Tester(connector, test, handler, sequencer);
         executor.addRunnable(tester);
-        executor.run();
       }
+      executor.run();
     }
     return results;
   }
