@@ -4,12 +4,8 @@ import com.yuvalshavit.mib.pk.PkFieldProvider;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.Random;
-import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class MainDeleteTest implements Test {
-  private final Random random = new Random();
   private final PkFieldProvider pkFieldProvider;
 
   public MainDeleteTest(PkFieldProvider pkFieldProvider) {

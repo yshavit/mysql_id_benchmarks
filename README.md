@@ -35,3 +35,31 @@ The tests are:
 - update the two val columns for each row in `Main`
 - join `Main` and `Secondary` M times
 - delete N rows from `Main`
+
+Compiling and running
+=====================
+
+    mvn clean package
+    
+    java \\
+        -Drows=<rows> \\
+        -Dthreads=<threads> \\
+        -Duser=<mysql_user> \\
+        -Dschema=<mysql_schema> \\
+        [ -Dpassword=<mysql_password> ] \\
+        -Dprovider=<providers> \\
+        -jar target/mysql-id-benchmarks-1.0-SNAPSHOT-jar-with-dependencies.jar
+
+where:
+
+- `<rows>` is the number of rows to insert into the main table
+- `<threas>` is the number of threads to use; each will have its own JDBC connection
+- `<mysql_user>` is the mysql user
+- `<mysql_schema>` is the mysql schema (aka database) to connect to
+- `<mysql_password>` is the user's password; defaults to `""`
+- `<providers>` is a comma-delimited list of the PK providers to use, or `all`. Your options are:
+    - `auto_inc` : PK column will be an auto-incremented int
+    - `varchar_utf8` : PK column will be a `VARCHAR(36)` in utf8, storing UUIDs
+    - `varchar_latin1` : Same, but in Latin1
+    - `char_latin1` : Same, but `CHAR(36)`
+    - `binary` : PK column will be a `BINARY(16)`, storing UUIDs
