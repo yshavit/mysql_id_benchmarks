@@ -1,12 +1,11 @@
 package com.yuvalshavit.mib.teststeps;
 
-import net.jcip.annotations.NotThreadSafe;
+import net.jcip.annotations.ThreadSafe;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-@NotThreadSafe
+@ThreadSafe
 public interface Test {
   String getPreparedStatementSql();
   void setParameters(PreparedStatement statement) throws SQLException;

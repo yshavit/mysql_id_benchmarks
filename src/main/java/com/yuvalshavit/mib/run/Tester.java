@@ -1,6 +1,5 @@
 package com.yuvalshavit.mib.run;
 
-import com.google.common.base.Supplier;
 import com.yuvalshavit.mib.util.SqlCloser;
 import com.yuvalshavit.mib.teststeps.Test;
 import net.jcip.annotations.ThreadSafe;
@@ -13,11 +12,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 public final class Tester implements Runnable {
 
   private final AtomicInteger sequencer;
-  private final Supplier<? extends Connection> connector;
+  private final ConnectionProvider connector;
   private final Test test;
   private final TestResultHandler resultHandler;
 
-  public Tester(Supplier<? extends Connection> connector,
+  public Tester(ConnectionProvider connector,
                 Test test,
                 TestResultHandler resultHandler,
                 AtomicInteger sequencer)
@@ -32,10 +31,10 @@ public final class Tester implements Runnable {
   public void run() {
     SqlCloser closer = new SqlCloser();
     try {
-      Connection connection = closer.register(connector.get());
       String sql = test.getPreparedStatementSql();
       PreparedStatement state;
       try {
+        Connection connection = closer.register(connector.get());
         state = closer.register(connection.prepareStatement(sql));
       }
       catch (Exception e) {
