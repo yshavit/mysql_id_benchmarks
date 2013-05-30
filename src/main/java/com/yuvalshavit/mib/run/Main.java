@@ -81,7 +81,7 @@ public class Main {
 
   public static void main(String[] args) throws Exception {
     if (args.length > 0) {
-      System.err.println("parameters are controled via -D switches");
+      System.err.println("parameters are controlled via -D switches");
       System.exit(1);
     }
     int nRows = getInt("rows");
